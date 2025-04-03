@@ -1,0 +1,3 @@
+mv .bash_profile ../.bash_profile
+mv .bashrc ../.bashrc
+source ../.bashrc
