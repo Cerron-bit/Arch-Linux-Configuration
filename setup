@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# creating the wallpaper directory.
+mkdir wallpaper
+# applying the bash configuration.
 mv .bash_profile ../.bash_profile
 mv .bashrc ../.bashrc
 source ../.bashrc
