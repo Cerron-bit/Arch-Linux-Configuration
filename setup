@@ -1,8 +1,23 @@
 #!/bin/bash
-
-# creating the wallpaper directory.
-mkdir wallpaper
-# applying the bash configuration.
-mv .bash_profile ../.bash_profile
-mv .bashrc ../.bashrc
-source ../.bashrc
+ 
+# install the needed dependencies.
+pacman -S xorg-server xorg-xinit i3-wm i3status kitty micro
+# move the bash configuration.
+mv misc/.bash_profile ../
+mv misc/.bashrc ../
+# checking for virtualization.
+if systemd-detect-virt -q; then
+	# install additional dependencies.
+	pacman -S virtualbox-guest-utils
+	# configure the support of vbox-features.
+	systemctl enable vboxservice
+	echo "exec VBoxClient --clipboard &" >> misc/.xinitrc
+	echo "exec VBoxClient --seamless &" >> misc/.xinitrc
+	echo "exec VBoxClient --vmsvga &" >> misc/.xinitrc	
+fi
+# finish config.
+echo "exec i3" >> misc/.xinitrc
+mv misc/.xinitrc ../
+# prepare directory for wallpapers.
+mv misc wallpaper
+echo "please restart your system to finish the setup and don't forget to set a wallpaper!"
