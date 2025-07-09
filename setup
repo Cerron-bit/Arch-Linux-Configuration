@@ -1,7 +1,7 @@
 #!/bin/bash
  
 # install the needed dependencies.
-pacman -S xorg-server xorg-xinit i3-wm i3status kitty micro
+pacman -S xorg-server xorg-xinit i3-wm i3status kitty micro btop
 # move the bash configuration.
 mv misc/.bash_profile ../
 mv misc/.bashrc ../
